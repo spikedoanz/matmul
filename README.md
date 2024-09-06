@@ -73,3 +73,8 @@ This repo contains a number of matrix multiplication implementations, in order o
 ## Resources
 
 https://github.com/OpenMathLib/OpenBLAS/tree/develop
+
+https://leimao.github.io/article/CUDA-Matrix-Multiplication-Optimization/
+
+https://en.algorithmica.org/hpc/cpu-cache/associativity/
+
