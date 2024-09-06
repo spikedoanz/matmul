@@ -4,7 +4,14 @@ This repo contains a number of matrix multiplication implementations, in order o
 
 ---
 
-## Chapters
+## Agenda
+
+- What is a matrix
+- How is it encoded
+- What are matmuls, naive impl
+- Incrementally making faster implementations
+
+## Implementations 
 
 1. Naive Implementation -- Python
 
@@ -66,7 +73,3 @@ This repo contains a number of matrix multiplication implementations, in order o
 ## Resources
 
 https://github.com/OpenMathLib/OpenBLAS/tree/develop
-
-
-
-
