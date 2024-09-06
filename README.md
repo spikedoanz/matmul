@@ -33,7 +33,7 @@ This repo contains a number of matrix multiplication implementations, in order o
 - 12 cores
 - Base clock 3.7GHz
 - Boost clock 4.8GHz
-- 24 threads
+- 24 threads (why is this not infinite?)
 - L1 Cache: ???
 - L2 Cache: 6MB
 - L3 Cache: 64MB
@@ -59,3 +59,14 @@ This repo contains a number of matrix multiplication implementations, in order o
 ## Theoretical bounds
 
 ## Supertheoretical bounds
+
+
+
+
+## Resources
+
+https://github.com/OpenMathLib/OpenBLAS/tree/develop
+
+
+
+
