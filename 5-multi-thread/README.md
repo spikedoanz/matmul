@@ -50,6 +50,7 @@ threads,m,n,k,time,gflops
 
 > i can totally unroll every single loop with metaprogramming
 > pretty sure blas does this statically with inline assembly
+> but this is beyond claude's ability soooooo
 
 ---
 
