@@ -48,6 +48,8 @@ threads,m,n,k,time,gflops
 24,2048,2048,2048,0.090838,189.66
 ```
 
+> i can totally unroll every single loop with metaprogramming
+> pretty sure blas does this statically with inline assembly
 
 ---
 
