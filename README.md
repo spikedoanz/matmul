@@ -9,7 +9,8 @@ This repo contains a number of matrix multiplication implementations, in order o
 - What is a matrix
 - How is it encoded
 - What are matmuls, naive impl
-- Incrementally making faster implementations
+- Multithreading discussion
+- GPUs are cope, vector instructions are cope
 
 ## Implementations 
 
@@ -52,7 +53,7 @@ This repo contains a number of matrix multiplication implementations, in order o
 
 ### GPU: [RTX 3090](https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/rtx-3090-3090ti/)
 - 10496 CUDA cores
-- ??? Tensor cores
+- 328 Tensor cores
 - Boost Clock 1.40 GHz
 - Boost Clock 1.7 GHz
 - 24 GB GDDR6X memory
@@ -83,4 +84,6 @@ http://blog.ezyang.com/2019/05/pytorch-internals/
 https://leimao.github.io/article/CUDA-Matrix-Multiplication-Optimization/
 
 https://en.algorithmica.org/hpc/cpu-cache/associativity/
+
+https://arxiv.org/abs/2301.03598
 
