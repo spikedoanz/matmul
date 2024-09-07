@@ -50,3 +50,9 @@ unrolling : 8.51
 -O1 : 8
 ditto
 ```
+
+
+```
+-mavx2 -mfma
+unrolling: 40 gflops
+```

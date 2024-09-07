@@ -3,7 +3,7 @@
 #include <time.h>
 #include <immintrin.h>
 
-#define BLOCK_SIZE 64  // Adjust this value based on your specific CPU's cache size
+#define BLOCK_SIZE 24  // Adjust this value based on your specific CPU's cache size
 
 void transpose(float *src, float *dst, int rows, int cols) {
     for (int i = 0; i < rows; i++) {
