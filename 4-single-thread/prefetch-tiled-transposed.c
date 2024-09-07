@@ -16,20 +16,19 @@ void transpose(float *src, float *dst, int rows, int cols) {
 
 void matmul(float *A, float *B_transposed, float *C, int M, int N, int K, int TILE_SIZE) {
     for (int i = 0; i < M; i += TILE_SIZE) {
-        for (int j = 0; j < N; j += TILE_SIZE) {
-            for (int k = 0; k < K; k += TILE_SIZE) {
+        for (int k = 0; k < K; k += TILE_SIZE) {
+            for (int j = 0; j < N; j += TILE_SIZE) {
                 for (int ii = i; ii < i + TILE_SIZE && ii < M; ii++) {
-                    for (int jj = j; jj < j + TILE_SIZE && jj < N; jj += 8) {
-                        // vectorized
-                        __m256 acc = _mm256_setzero_ps();
-                        for (int kk = k; kk < k + TILE_SIZE && kk < K; kk++) {
-                            __m256 a = _mm256_broadcast_ss(&A[ii * K + kk]);
+                    for (int kk = k; kk < k + TILE_SIZE && kk < K; kk++) {
+                        _mm_prefetch((char*)&A[ii * K + kk + TILE_SIZE], _MM_HINT_T0);
+                        __m256 a = _mm256_broadcast_ss(&A[ii * K + kk]);
+                        for (int jj = j; jj < j + TILE_SIZE && jj < N; jj += 8) {
+                            _mm_prefetch((char*)&B_transposed[jj * K + kk + TILE_SIZE], _MM_HINT_T0);
                             __m256 b = _mm256_loadu_ps(&B_transposed[jj * K + kk]);
-                            acc = _mm256_fmadd_ps(a, b, acc);
+                            __m256 c = _mm256_loadu_ps(&C[ii * N + jj]);
+                            c = _mm256_fmadd_ps(a, b, c);
+                            _mm256_storeu_ps(&C[ii * N + jj], c);
                         }
-                        __m256 c = _mm256_loadu_ps(&C[ii * N + jj]);
-                        c = _mm256_add_ps(c, acc);
-                        _mm256_storeu_ps(&C[ii * N + jj], c);
                     }
                 }
             }
