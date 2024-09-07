@@ -1,6 +1,6 @@
 # Factors
 clock_speed = 4.8e9  # 4.8 GHz in Hz
-num_cores = 1
+num_cores = 12
 simd_factor = 4  # AVX2 for double-precision
 fma_factor = 2
 superscalar_factor = 6

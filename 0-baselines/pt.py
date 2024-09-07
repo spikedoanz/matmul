@@ -1,13 +1,5 @@
-import os
-os.environ["OPENBLAS_NUM_THREADS"] = "1"
-
 import torch
 import time
-
-torch.set_num_threads(1)
-
-# Disable OpenMP
-os.environ["OMP_NUM_THREADS"] = "1"
 
 # Optional: Disable CUDA if you're using a GPU and want to ensure CPU usage
 torch.cuda.is_available = lambda : False
