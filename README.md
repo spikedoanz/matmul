@@ -14,11 +14,16 @@ This repo contains a number of matrix multiplication implementations, in order o
 
 ## Implementations 
 
+0. Baselines
+- numpy: ~300 gflops
+- tinygrad: ~700 gflops
+- torch: ~18 tflops
+
 1. Naive Implementation -- Python : 0.0 gflops
 
 2. Naive Implementation -- C : 0.75 gflops
 
-3. Lowered time complexity -- C
+3. Lowered time complexity -- C : 0.92 glfops
 
 4. Single threaded Optimizations -- C
 
