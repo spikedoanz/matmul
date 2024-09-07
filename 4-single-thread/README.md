@@ -31,3 +31,10 @@ transposed + multi + tiling: 0.76 gflops tile size 8
 -O3: 6.09 gflops
 ```
 
+```
+vectorized : 8.16
+-O1 : 8.14
+-O2 : 8.14
+-O3 : 8.51
+```
+
