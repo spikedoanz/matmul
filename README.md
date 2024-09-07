@@ -79,3 +79,8 @@ https://github.com/wangzyon/NVIDIA_SGEMM_PRACTICE/tree/master
 https://github.com/siboehm/SGEMM_CUDA
 
 http://blog.ezyang.com/2019/05/pytorch-internals/
+
+https://leimao.github.io/article/CUDA-Matrix-Multiplication-Optimization/
+
+https://en.algorithmica.org/hpc/cpu-cache/associativity/
+
