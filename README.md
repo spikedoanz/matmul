@@ -73,3 +73,9 @@ This repo contains a number of matrix multiplication implementations, in order o
 ## Resources
 
 https://github.com/OpenMathLib/OpenBLAS/tree/develop
+
+https://github.com/wangzyon/NVIDIA_SGEMM_PRACTICE/tree/master
+
+https://github.com/siboehm/SGEMM_CUDA
+
+http://blog.ezyang.com/2019/05/pytorch-internals/
