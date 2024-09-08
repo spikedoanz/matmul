@@ -28,9 +28,9 @@ This repo contains a number of matrix multiplication implementations, in order o
 
 4. Single threaded Optimizations -- C : 58 GFLOPS
 
-5. Multi-threaded Implementation -- C
+5. Multi-threaded Implementation -- C : 250 GFLOPS
 
-6. GPU Acceleration -- C cuda
+6. GPU Acceleration -- C cuda : 5 TFLOPS
 
 7. Distributed Computing -- Multi GPU
 
