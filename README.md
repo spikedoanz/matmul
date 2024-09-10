@@ -1,16 +1,12 @@
 # matmul 
 
-This repo contains a number of matrix multiplication implementations, in order of increasing complexity
+This repo contains a number of matrix multiplication implementations, in order of increasing complexity.
+
+Within each folder contains implementations of a certain type (cpu, single threaded -> gpu distributed, etc).
+
+These are named o0 (unoptimized) .. oN (most optimized)
 
 ---
-
-## Agenda
-
-- What is a matrix
-- How is it encoded
-- What are matmuls, naive impl
-- Multithreading discussion
-- GPUs are cope, vector instructions are cope
 
 ## Implementations 
 
@@ -28,7 +24,7 @@ This repo contains a number of matrix multiplication implementations, in order o
 
 4. Single threaded Optimizations -- C : 58 GFLOPS
 
-5. Multi-threaded Implementation -- C : 250 GFLOPS
+5. Multi-threaded Implementation -- C : 625 GFLOPS
 
 6. GPU Acceleration -- C cuda : 5 TFLOPS
 
@@ -48,12 +44,9 @@ This repo contains a number of matrix multiplication implementations, in order o
 - Base clock 3.7GHz
 - Boost clock 4.8GHz
 - 24 threads (why is this not infinite?)
-- L1 Cache: ???
-- L2 Cache: 6MB
-- L3 Cache: 64MB
 - Memory transfer: 3200 MT/s
 
-
+- Cache info:
 ```
 NUMANode L#0 (P#0 31GB)
 L3 L#0 (32MB)
@@ -97,11 +90,8 @@ L3 L#1 (32MB)
 ```
 
 
-
-
-
 - 32 GB GDDR4
-- ??? bandwidth
+- ??? bandwidth from RAM -> L3
 
 ### GPU: [RTX 3090](https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/rtx-3090-3090ti/)
 - 10496 CUDA cores
@@ -114,14 +104,18 @@ L3 L#1 (32MB)
 
 ### Distributed
 
-### Tools
+
+---
 
 ## Theoretical bounds
 
+What is possible with the chips we have today.
+
 ## Supertheoretical bounds
 
+What is possible with the chips we COULD have in the future.
 
-
+---
 
 ## Resources
 
@@ -138,4 +132,3 @@ https://leimao.github.io/article/CUDA-Matrix-Multiplication-Optimization/
 https://en.algorithmica.org/hpc/cpu-cache/associativity/
 
 https://arxiv.org/abs/2301.03598
-
