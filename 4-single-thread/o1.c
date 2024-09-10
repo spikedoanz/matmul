@@ -1,3 +1,4 @@
+// transposing b
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -10,20 +11,14 @@ void transpose(float *src, float *dst, int rows, int cols) {
     }
 }
 
-void matmul(float *A, float *B_transposed, float *C, int M, int N, int K, int TILE_SIZE) {
-    for (int i = 0; i < M; i += TILE_SIZE) {
-        for (int j = 0; j < N; j += TILE_SIZE) {
-            for (int k = 0; k < K; k += TILE_SIZE) {
-                for (int ii = i; ii < i + TILE_SIZE && ii < M; ii++) {
-                    for (int jj = j; jj < j + TILE_SIZE && jj < N; jj++) {
-                        float acc = 0.0f;
-                        for (int kk = k; kk < k + TILE_SIZE && kk < K; kk++) {
-                            acc += A[ii * K + kk] * B_transposed[jj * K + kk];
-                        }
-                        C[ii * N + jj] += acc;
-                    }
-                }
+void matmul(float *A, float *B_transposed, float *C, int M, int N, int K) {
+    for (int row = 0; row < M; row++) {
+        for (int col = 0; col < N; col++) {
+            float acc = 0.0f;
+            for (int inner = 0; inner < K; inner++) {
+                acc += A[row * K + inner] * B_transposed[col * K + inner];
             }
+            C[row * N + col] = acc;
         }
     }
 }
@@ -31,12 +26,11 @@ void matmul(float *A, float *B_transposed, float *C, int M, int N, int K, int TI
 int main() {
     int sizes[][3] = {{128, 128, 128}, {512, 512, 512}, {1024, 1024, 1024}};
     int num_sizes = sizeof(sizes) / sizeof(sizes[0]);
-    int tile_sizes[] = {8, 16, 32, 64};
-    int num_tile_sizes = sizeof(tile_sizes) / sizeof(tile_sizes[0]);
+    int num_iterations = 100;
 
     srand(time(NULL));
 
-    printf("m,n,k,tile_size,time,flops\n");
+    printf("m,n,k,time,flops\n");
 
     for (int i = 0; i < num_sizes; i++) {
         int M = sizes[i][0];
@@ -57,16 +51,10 @@ int main() {
 
         transpose(B, B_transposed, K, N);
 
-        for (int t = 0; t < num_tile_sizes; t++) {
-            int TILE_SIZE = tile_sizes[t];
-
-            for (int j = 0; j < M * N; j++) {
-                C[j] = 0.0f;
-            }
-
+        for (int iter = 0; iter < num_iterations; iter++) {
             clock_t start_time = clock();
 
-            matmul(A, B_transposed, C, M, N, K, TILE_SIZE);
+            matmul(A, B_transposed, C, M, N, K);
 
             clock_t end_time = clock();
 
@@ -74,7 +62,7 @@ int main() {
             double flops = 2.0 * M * N * K;
             double flops_per_second = flops / iteration_time / 1e9;
 
-            printf("%d,%d,%d,%d,%.6f,%.2f\n", M, N, K, TILE_SIZE, iteration_time, flops_per_second);
+            printf("%d,%d,%d,%.6f,%.2f\n", M, N, K, iteration_time, flops_per_second);
         }
 
         free(A);

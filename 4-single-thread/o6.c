@@ -1,9 +1,10 @@
+// tuned tile size + vectorized + unrolling + prefetch + tiling + transposing b
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 #include <immintrin.h>
 
-#define BLOCK_SIZE 24  // Adjust this value based on your specific CPU's cache size
+#define BLOCK_SIZE 24 // tuned for 5900X's 32KB of L1 Cache
 
 void transpose(float *src, float *dst, int rows, int cols) {
     for (int i = 0; i < rows; i++) {
