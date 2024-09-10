@@ -36,7 +36,7 @@ This repo contains a number of matrix multiplication implementations, in order o
 
 8. Distributed Computing -- Multi Node
 
-9. Arcane optimizations
+9. Compiler -- Python (CPU) : 150 GFLOPS 
 
 
 ---
